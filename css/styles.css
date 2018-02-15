@@ -1,0 +1,26 @@
+.main{
+  margin: 10px;
+  border-color: red;
+  border-width: 5px;
+}
+
+body {
+  background-color: rgb(50, 50, 50);
+}
+
+button{
+  border-color: rgb(50, 50, 50);
+  padding: 0px;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 360px;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+
+button.button-primary {
+  background-color: rgb(50, 50, 120);
+  border-color: rgb(50, 50, 120);
+}

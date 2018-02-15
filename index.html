@@ -4,40 +4,49 @@
   <meta charset="utf-8">
 
   <title>Calculator</title>
-  <link rel="stylesheet" href="./css/skeleton.css">
   <link rel="stylesheet" href="./css/normalize.css">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/skeleton.css">
+  <link rel="stylesheet" href="./css/styles.css">
   <script type="text/javascript" src="calculator.js"></script>
-
-  <style type="text/css">
-  </style>
 
 </head>
 
 <body>
-  <div id="container">
-    <div id="header">
+  <div class="container" style="padding: 10px">
+    <div class="header">
 
     </div>
-    <div id="body">
-      <input id="output" readonly="true" style="text-align:right"/>
-      <button onclick="input('0')">0</button>
-      <button onclick="input('1')">1</button>
-      <button onclick="input('2')">2</button>
-      <button onclick="input('3')">3</button>
-      <button onclick="input('4')">4</button>
-      <button onclick="input('5')">5</button>
-      <button onclick="input('6')">6</button>
-      <button onclick="input('7')">7</button>
-      <button onclick="input('8')">8</button>
-      <button onclick="input('9')">9</button>
-      <button onclick="input('+')">+</button>
-      <button onclick="input('-')">-</button>
-      <button onclick="input('*')">x</button>
-      <button onclick="input('/')">÷</button>
-      <button onclick="negate()">+/-</button>
-      <button onclick="input('=')">=</button>
-      <button onclick="clear()">Clear</button>
+    <div class="main">
+      <input id="output" class="twelve columns" readonly="true" style="text-align:right"/>
+      <div class="row">
+        <button class="three columns" onclick="input('7')">7</button>
+        <button class="three columns" onclick="input('8')">8</button>
+        <button class="three columns" onclick="input('9')">9</button>
+        <button class="three columns" onclick="input('-')">-</button>
+      </div>
+      <div class="row">
+        <button class="three columns" onclick="input('4')">4</button>
+        <button class="three columns" onclick="input('5')">5</button>
+        <button class="three columns" onclick="input('6')">6</button>
+        <button class="three columns" onclick="input('+')">+</button>
+      </div>
+      <div class="row">
+        <button class="three columns" onclick="input('1')">1</button>
+        <button class="three columns" onclick="input('2')">2</button>
+        <button class="three columns" onclick="input('3')">3</button>
+        <button class="three columns" onclick="input('*')">x</button>
+      </div>
+      <div class="row">
+        <button class="three columns" onclick="input('0')">0</button>
+        <button class="three columns" onclick="negate()">+/-</button>
+        <button class="three columns" onclick="input('.')">.</button>
+        <button class="three columns" onclick="input('/')">÷</button>
+      </div>
+      <div class="row">
+        <button class="three columns" onclick="clear()">Clear</button>
+        <button class="nine columns button-primary" onclick="input('=')">=</button>
+      </div>
+
     </div>
   </div>
 

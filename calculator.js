@@ -2,11 +2,19 @@
 var entries = [];
 var temp = "";
 var negative = false;
+var toClear = false;
+var hasDecimal = false;
+
 //Button listener
 function input(input){
   //recieve a number -> add to temp
   if (input.match(/[0-9]/)) {
-    temp+=input;
+    if (toClear){
+      temp = input;
+      toClear = false;
+    } else {
+      temp+=input;
+    }
     display(temp);
   }
 
@@ -14,9 +22,9 @@ function input(input){
   //then add symbol to entries and clear temp
   else if (input.match(/[+-/*]/)){
 
-    if (entries.length > 0 && !entries[entries.length-1].match(/[0-9]/)){
-      entries.splice(entries.length, 1);
-    }
+    // if (entries.length > 0 && !entries[entries.length-1].match(/[0-9]/)){
+    //   entries.splice(entries.length, 1);
+    // }
 
     if (negative){
       entries.push('-' + temp);
@@ -75,9 +83,11 @@ function evaluate(){
 
     entries.splice(0, 2);
     entries[0] = result;
-
+    temp = result;
+    toClear = true;
   }
   display(entries[0]);
+  entries = [];
 }
 
 function negate(){
