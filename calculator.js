@@ -2,15 +2,23 @@
 var entries = [];
 var temp = "";
 var negative = false;
-var toClear = false;
+var toClear = true;
 var hasDecimal = false;
+
 
 //Button listener
 function input(input){
   //recieve a number -> add to temp
-  if (input.match(/[0-9]/)) {
+  if (input.match(/[0-9.]/)) {
+    if (temp !== "" && temp.split("").includes(".") && input === "."){
+      return;
+    }
     if (toClear){
-      temp = input;
+      if (input === "."){
+        temp = "0.";
+      } else {
+        temp = input;
+      }
       toClear = false;
     } else {
       temp+=input;
@@ -45,11 +53,19 @@ function input(input){
     temp = "";
     negative = false;
     evaluate();
-  } else {
-    if (temp === ""){
-      return;
-    }
   }
+// Add a decimal point if there is not one already.
+  // else if (input === "."){
+  //   if (!temp.split("").includes(".")) {
+  //     if (toClear){
+  //       temp = "0.";
+  //       toClear = false;
+  //     } else {
+  //       temp+=".";
+  //     }
+  //     display(temp);
+  //   }
+  // }
 
   //clear last entry
 
@@ -63,8 +79,8 @@ function input(input){
 // Interprets and evaluates the entries array
 function evaluate(){
   while (entries.length > 2){
-    var val1 = parseInt(entries[0]);
-    var val2 = parseInt(entries[2]);
+    var val1 = parseFloat(entries[0]);
+    var val2 = parseFloat(entries[2]);
     var operation = entries[1];
 
     var result = 0;
