@@ -5,7 +5,6 @@ var negative = false;
 var toClear = true;
 var hasDecimal = false;
 
-
 //Button listener
 function input(input){
   //recieve a number -> add to temp
@@ -14,16 +13,17 @@ function input(input){
       return;
     }
     if (toClear){
+      entries = [];
       if (input === "."){
         temp = "0.";
       } else {
         temp = input;
       }
-      toClear = false;
     } else {
       temp+=input;
     }
-    display(temp);
+    displayTemp(temp);
+    toClear = false;
   }
 
   //recieve a non-equals symbol -> add temp number to entries[]
@@ -42,6 +42,7 @@ function input(input){
     entries.push(input);
     temp = "";
     negative = false;
+    toClear = false;
   }
   // If '=' then evaluate the answer
   else if (input === "=") {
@@ -54,18 +55,6 @@ function input(input){
     negative = false;
     evaluate();
   }
-// Add a decimal point if there is not one already.
-  // else if (input === "."){
-  //   if (!temp.split("").includes(".")) {
-  //     if (toClear){
-  //       temp = "0.";
-  //       toClear = false;
-  //     } else {
-  //       temp+=".";
-  //     }
-  //     display(temp);
-  //   }
-  // }
 
   //clear last entry
 
@@ -74,6 +63,7 @@ function input(input){
     //interpret negative symbol to change number to negative
   }
   console.log(entries);
+  displayHist();
 }
 
 // Interprets and evaluates the entries array
@@ -102,31 +92,41 @@ function evaluate(){
     temp = result;
     toClear = true;
   }
-  display(entries[0]);
-  entries = [];
+  displayTemp(entries[0]);
+  entries = [entries[0]];
 }
 
 function negate(){
   negative = !negative;
-  display(temp);
+  displayTemp(temp);
 }
 
 // Resets the calculator
 function clear(){
   temp = "";
   entries = [];
-  display("");
+  displayTemp("");
+  displayHist();
 }
 
 
 // vvvvvvvvvvvvvvvvvvvvvvvvvv Helper Functions vvvvvvvvvvvvvvvvvvvvvvvvvv
 
 // Displays the given text in the output box
-function display(text){
+function displayTemp(text){
   if (negative) {
     document.getElementById("output").value = '-' + text;
   } else {
    document.getElementById("output").value = text;
   }
   console.log("setting text to: ", text);
+}
+
+// Displays the given text in the output box
+function displayHist(){
+  var text = "";
+  for (var i = 0; i < entries.length; i++){
+    text+=entries[i] + " ";
+  }
+  document.getElementById("history").innerHTML = text;
 }

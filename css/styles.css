@@ -24,3 +24,8 @@ button.button-primary {
   background-color: rgb(50, 50, 120);
   border-color: rgb(50, 50, 120);
 }
+
+button.button-primary:hover {
+  background-color: rgb(30, 30, 100);
+  border-color: rgb(30, 30, 130);
+}
